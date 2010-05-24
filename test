@@ -1,0 +1,20 @@
+#!/Users/schacon/otp_src_R13B03/bin/escript
+%% -*- erlang -*-
+%%! debug verbose -noshell
+
+main([Object]) ->
+    try
+        geef:start(),
+        Test = geef:object_exists(4),
+        io:format("factorial ~s:~w~n", [Object, Test])
+    catch
+        _:_ ->
+            usage()
+    end;
+main(_) ->
+    usage().
+        
+usage() ->
+    io:format("usage: factorial integer\n"),
+    halt(1).
+        
