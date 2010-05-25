@@ -8,7 +8,12 @@ main([Command|_Args]) ->
       "h2r" ->
         [Object|_Rest] = _Args,
         Raw = geef:hex_to_raw(Object),
-        io:format("Raw ~w~n", [Raw]);
+        io:format("Raw: ~w~n", [Raw]);
+      "exists" ->
+        [Path|_Rest] = _Args,
+        [Object|_None] = _Rest,
+        Exists = geef:object_exists(Path, Object),
+        io:format("Exists: ~w~n", [Exists]);
       _Else ->
         usage()
     end;
