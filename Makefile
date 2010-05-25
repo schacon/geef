@@ -4,6 +4,8 @@ INCLUDES = -I$(OTPROOT)/erts/emulator/beam/
 # OS X flags.
 GCCFLAGS = -O3 -fPIC -bundle -flat_namespace -undefined suppress -fno-common -Wall -m32
 
+LIBS = -lz -lgit2
+
 # Linux Flags
 #GCCFLAGS = -O3 -fPIC -shared -fno-common -Wall
 

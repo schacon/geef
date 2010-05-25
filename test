@@ -3,18 +3,13 @@
 %%! debug verbose -noshell
 
 main([Object]) ->
-    try
-        geef:start(),
-        Test = geef:object_exists(4),
-        io:format("factorial ~s:~w~n", [Object, Test])
-    catch
-        _:_ ->
-            usage()
-    end;
+    geef:start(),
+    Test = geef:object_exists(4),
+    io:format("exists ~s:~w~n", [Object, Test]);
 main(_) ->
     usage().
         
 usage() ->
-    io:format("usage: factorial integer\n"),
+    io:format("usage: ./test SHA\n"),
     halt(1).
         
