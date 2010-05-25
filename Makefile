@@ -1,4 +1,4 @@
-OTPROOT=/Users/schacon/otp_src_R13B03
+OTPROOT=/Users/schacon/projects/otp
 INCLUDES = -I$(OTPROOT)/erts/emulator/beam/
 
 # OS X flags.

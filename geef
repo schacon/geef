@@ -1,0 +1,21 @@
+#!/Users/schacon/projects/otp/bin/escript
+%% -*- erlang -*-
+%%! debug verbose -noshell
+
+main([Command|_Args]) ->
+    geef:start(),
+    case Command of
+      "h2r" ->
+        [Object|_Rest] = _Args,
+        Raw = geef:hex_to_raw(Object),
+        io:format("Raw ~w~n", [Raw]);
+      _Else ->
+        usage()
+    end;
+main(_) ->
+    usage().
+        
+usage() ->
+    io:format("usage: ./geef h2r HEX_SHA\n"),
+    halt(1).
+        

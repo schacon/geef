@@ -1,10 +1,10 @@
 -module(geef).
--export([start/0, object_exists/1]).
+-export([start/0, hex_to_raw/1]).
 
 start() ->
     erlang:load_nif("geef", 0).
 
-object_exists(_Val) ->
+hex_to_raw(_Val) ->
     nif_error(?LINE).    
 
 nif_error(Line) ->

@@ -1,3 +1,4 @@
 *.beam
 *.so
 *.o
+*.swp
