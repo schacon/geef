@@ -1,30 +1,15 @@
-OTPROOT=/Users/schacon/projects/otp
-INCLUDES = -I$(OTPROOT)/erts/emulator/beam/
+REBAR=$(shell which rebar || echo ./rebar)
 
-# OS X flags.
-GCCFLAGS = -O3 -fPIC -bundle -flat_namespace -undefined suppress -fno-common -Wall -m32
+all: compile
 
-LIBS = -lz -lgit2
+./rebar:
+		erl -noshell -s inets start \
+					-eval 'httpc:request(get, {"http://hg.basho.com/rebar/downloads/rebar", []}, [], [{stream, "./rebar"}])' \
+							-s init stop
+			chmod +x ./rebar
 
-# Linux Flags
-#GCCFLAGS = -O3 -fPIC -shared -fno-common -Wall
+compile: $(REBAR)
+		@$(REBAR) compile
 
-CFLAGS = $(GCCFLAGS) $(INCLUDES)
-LDFLAGS = $(GCCFLAGS) $(LIBS)
-
-OBJECTS = geef.o
-
-DRIVER = geef.so
-BEAM = geef.beam
-
-all: $(DRIVER) $(BEAM)
-
-clean: 
-	rm -f *.o *.beam $(DRIVER)
-	
-$(DRIVER): $(OBJECTS)
-	gcc -o $@ $^ $(LDFLAGS)
-	
-$(BEAM): geef.erl
-	erlc $^
-
+clean: $(REBAR)
+		@$(REBAR) clean

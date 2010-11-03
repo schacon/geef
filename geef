@@ -1,6 +1,6 @@
-#!/Users/schacon/projects/otp/bin/escript
+#!/usr/local/Cellar/erlang/R14B/bin/escript
 %% -*- erlang -*-
-%%! debug verbose -noshell
+%%! debug verbose -noshell -pa ebin
 
 main([Command|_Args]) ->
     geef:start(),

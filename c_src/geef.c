@@ -1,8 +1,15 @@
 #include "erl_nif.h"
 #include <stdio.h>
+#include <git/commit.h>
+#include <git/tag.h>
 #include <git/common.h>
-#include <git/oid.h>
+#include <git/errors.h>
+#include <git/index.h>
 #include <git/odb.h>
+#include <git/oid.h>
+#include <git/revwalk.h>
+#include <git/repository.h>
+#include <git/zlib.h>
 
 #define MAXBUFLEN       1024
 
@@ -19,7 +26,7 @@ geef_hex_to_raw(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[])
   git_oid_mkstr(&oid, sha);
 
   ErlNifBinary ibin;
-  enif_alloc_binary(env, 20, &ibin);
+  enif_alloc_binary(20, &ibin);
   memcpy(ibin.data, (&oid)->id, 20);
 
   return enif_make_binary(env, &ibin);
