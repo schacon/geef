@@ -43,7 +43,7 @@ The API looks basically like this:
 CONTRIBUTING
 ==============
 
-Fork schacon/ribbit on GitHub, make it awesomer (preferably in a branch named
+Fork schacon/geef on GitHub, make it awesomer (preferably in a branch named
 for the topic), send a pull request.
 
 

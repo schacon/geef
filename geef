@@ -1,4 +1,4 @@
-#!/usr/local/Cellar/erlang/R14B/bin/escript
+#!/usr/bin/env escript
 %% -*- erlang -*-
 %%! debug verbose -noshell -pa ebin
 

@@ -1,15 +1,16 @@
 #include "erl_nif.h"
 #include <stdio.h>
-#include <git/commit.h>
-#include <git/tag.h>
-#include <git/common.h>
-#include <git/errors.h>
-#include <git/index.h>
-#include <git/odb.h>
-#include <git/oid.h>
-#include <git/revwalk.h>
-#include <git/repository.h>
-#include <git/zlib.h>
+#include <string.h>
+#include <git2/commit.h>
+#include <git2/tag.h>
+#include <git2/common.h>
+#include <git2/errors.h>
+#include <git2/index.h>
+#include <git2/odb.h>
+#include <git2/oid.h>
+#include <git2/revwalk.h>
+#include <git2/repository.h>
+#include <git2/zlib.h>
 
 #define MAXBUFLEN       1024
 
@@ -23,7 +24,7 @@ geef_hex_to_raw(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[])
       return enif_make_badarg(env);
 
   git_oid oid;
-  git_oid_mkstr(&oid, sha);
+  git_oid_fromstr(&oid, sha);
 
   ErlNifBinary ibin;
   enif_alloc_binary(20, &ibin);
@@ -49,7 +50,7 @@ geef_object_exists(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[])
   git_odb_open(&odb, path);
 
   git_oid oid;
-  git_oid_mkstr(&oid, sha);
+  git_oid_fromstr(&oid, sha);
 
   int exists = git_odb_exists(odb, &oid);
   if(exists == 1) {
