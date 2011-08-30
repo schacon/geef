@@ -7,9 +7,9 @@ to Erlang.
 INSTALLING AND RUNNING
 ========================
 
-First you need to install libgit2 (gsoc edition):
+First you need to install libgit2:
 
-    $ git clone git://github.com/tanoku/libgit2-gsoc2010.git
+    $ git clone git://github.com/libgit2/libgit2.git
     $ cd libgit2
     $ make
     $ make install

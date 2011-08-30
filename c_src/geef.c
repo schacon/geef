@@ -1,16 +1,7 @@
 #include "erl_nif.h"
 #include <stdio.h>
 #include <string.h>
-#include <git2/commit.h>
-#include <git2/tag.h>
-#include <git2/common.h>
-#include <git2/errors.h>
-#include <git2/index.h>
-#include <git2/odb.h>
-#include <git2/oid.h>
-#include <git2/revwalk.h>
-#include <git2/repository.h>
-#include <git2/zlib.h>
+#include <git2.h>
 
 #define MAXBUFLEN       1024
 
